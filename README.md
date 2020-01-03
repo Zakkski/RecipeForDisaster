@@ -34,3 +34,13 @@ Ingredient
 IngredientId PK int
 Name varchar(200)
 Count bool
+
+
+Basic TODO
+- Figure out routes needed
+- Create controllers
+- Setup server
+- Create DB
+- Create tables with EF
+- Create seed data
+- Onto frontend
