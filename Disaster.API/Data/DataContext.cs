@@ -1,6 +1,7 @@
+using Disaster.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DisasterBackend.Data
+namespace Disaster.API.Data
 {
     public class DataContext : DbContext
     {

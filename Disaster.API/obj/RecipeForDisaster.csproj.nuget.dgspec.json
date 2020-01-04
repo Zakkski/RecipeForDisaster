@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj": {}
+    "C:\\Users\\zacha\\code\\RecipeForDisaster\\Disaster.API\\RecipeForDisaster.csproj": {}
   },
   "projects": {
-    "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj": {
+    "C:\\Users\\zacha\\code\\RecipeForDisaster\\Disaster.API\\RecipeForDisaster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj",
+        "projectUniqueName": "C:\\Users\\zacha\\code\\RecipeForDisaster\\Disaster.API\\RecipeForDisaster.csproj",
         "projectName": "RecipeForDisaster",
-        "projectPath": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj",
+        "projectPath": "C:\\Users\\zacha\\code\\RecipeForDisaster\\Disaster.API\\RecipeForDisaster.csproj",
         "packagesPath": "C:\\Users\\zacha\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\obj\\",
+        "outputPath": "C:\\Users\\zacha\\code\\RecipeForDisaster\\Disaster.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zacha\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,15 +36,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.0, )"
             }

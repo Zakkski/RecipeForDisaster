@@ -1,4 +1,4 @@
-namespace DisasterBackend.Models
+namespace Disaster.API.Models
 {
     public class Ingredient
     {

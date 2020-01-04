@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DisasterBackend/bin/Debug/netcoreapp3.1/RecipeForDisaster.dll",
+            "program": "${workspaceFolder}/Disaster.API/bin/Debug/netcoreapp3.1/RecipeForDisaster.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/DisasterBackend",
+            "cwd": "${workspaceFolder}/Disaster.API",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
