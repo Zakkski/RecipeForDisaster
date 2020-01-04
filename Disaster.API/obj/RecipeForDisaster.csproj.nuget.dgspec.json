@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zacha\\code\\RecipeForDisaster\\RecipeForDisaster.csproj": {}
+    "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zacha\\code\\RecipeForDisaster\\RecipeForDisaster.csproj": {
+    "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zacha\\code\\RecipeForDisaster\\RecipeForDisaster.csproj",
+        "projectUniqueName": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj",
         "projectName": "RecipeForDisaster",
-        "projectPath": "C:\\Users\\zacha\\code\\RecipeForDisaster\\RecipeForDisaster.csproj",
+        "projectPath": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\RecipeForDisaster.csproj",
         "packagesPath": "C:\\Users\\zacha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zacha\\code\\RecipeForDisaster\\obj\\",
+        "outputPath": "c:\\Users\\zacha\\code\\RecipeForDisaster\\DisasterBackend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zacha\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -35,6 +35,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
