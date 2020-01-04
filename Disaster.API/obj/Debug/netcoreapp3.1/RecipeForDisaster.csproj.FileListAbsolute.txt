@@ -36,3 +36,4 @@ C:\Users\zacha\code\RecipeForDisaster\Disaster.API\obj\Debug\netcoreapp3.1\Recip
 C:\Users\zacha\code\RecipeForDisaster\Disaster.API\obj\Debug\netcoreapp3.1\RecipeForDisaster.csproj.CopyComplete
 C:\Users\zacha\code\RecipeForDisaster\Disaster.API\obj\Debug\netcoreapp3.1\RecipeForDisaster.dll
 C:\Users\zacha\code\RecipeForDisaster\Disaster.API\obj\Debug\netcoreapp3.1\RecipeForDisaster.pdb
+C:\Users\zacha\code\RecipeForDisaster\Disaster.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
