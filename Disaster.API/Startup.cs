@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Disaster.API.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace RecipeForDisaster
 {
@@ -28,7 +31,26 @@ namespace RecipeForDisaster
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddDbContext<DataContext>();
+            // Single instance can be problematic for concurrent requests
+            // services.AddSingleton();
+            // Creates a new instance each time it is called, best for lightweight statless services
+            // services.AddTransient();
+            // Like Singleton but uses same instance for calls in the same http request
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            // Authentication scheme that will be used
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                        .AddJwtBearer(options => {
+                            options.TokenValidationParameters = new TokenValidationParameters
+                            {
+                                ValidateIssuerSigningKey = true,
+                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                                ValidateIssuer = false,
+                                ValidateAudience = false
+                            };
+                        });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,12 +59,18 @@ namespace RecipeForDisaster
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // something about UseHttpsRedircetion makes this not work as a Cors policy
+                // with origins and then you can set the client to use
+                app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
-            app.UseHttpsRedirection();
+
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            // Needs to be before authorization, used to implement auth scheme
+            // Must send requests with header (Authorization: Bearer jwttoken)
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

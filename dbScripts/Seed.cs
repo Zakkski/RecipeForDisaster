@@ -1,4 +1,4 @@
-// // Delete Ingredients
+// Delete Ingredients
 // Ingredients.DeleteAllOnSubmit(Ingredients);
 // SubmitChanges();
 
