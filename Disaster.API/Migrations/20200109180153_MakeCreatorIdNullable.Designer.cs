@@ -4,14 +4,16 @@ using Disaster.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace RecipeForDisaster.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200109180153_MakeCreatorIdNullable")]
+    partial class MakeCreatorIdNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,9 +51,6 @@ namespace RecipeForDisaster.Migrations
 
                     b.Property<bool>("IsRecipe")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -109,28 +108,6 @@ namespace RecipeForDisaster.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Disaster.API.Models.UserList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ListId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ListId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserLists");
-                });
-
             modelBuilder.Entity("Disaster.API.Models.List", b =>
                 {
                     b.HasOne("Disaster.API.Models.User", "Creator")
@@ -149,21 +126,6 @@ namespace RecipeForDisaster.Migrations
                     b.HasOne("Disaster.API.Models.List", "List")
                         .WithMany()
                         .HasForeignKey("ListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Disaster.API.Models.UserList", b =>
-                {
-                    b.HasOne("Disaster.API.Models.List", "List")
-                        .WithMany()
-                        .HasForeignKey("ListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Disaster.API.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

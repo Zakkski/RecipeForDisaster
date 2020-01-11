@@ -39,6 +39,8 @@ namespace RecipeForDisaster
             // services.AddTransient();
             // Like Singleton but uses same instance for calls in the same http request
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IIngredientRepository, IngredientRepository>();
+            services.AddScoped<IUserListRepository, UserListRepository>();
             // Authentication scheme that will be used
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         .AddJwtBearer(options => {
@@ -50,7 +52,7 @@ namespace RecipeForDisaster
                                 ValidateAudience = false
                             };
                         });
-
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -40,7 +40,8 @@ namespace Disaster.API.Controllers
 
             var userToCreate = new User
             {
-                Username = userForRegister.Username
+                Username = userForRegister.Username,
+                Email = userForRegister.Email
             };
 
             var createdUser = await _repo.Register(userToCreate, userForRegister.Password);

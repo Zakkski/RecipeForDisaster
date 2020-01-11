@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Disaster.API.Controllers
 {
     // Causes everything here to be an authorized request, need to give it an authentication middleware in startup
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IngredientsController : ControllerBase
@@ -19,9 +19,10 @@ namespace Disaster.API.Controllers
         }
 
         // api/ingredients
-        [AllowAnonymous]
+        // Skips auth
+        // [AllowAnonymous]
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Index()
         {
             var ingredients = _context.Ingredients.ToList();
 
@@ -30,9 +31,9 @@ namespace Disaster.API.Controllers
 
         // api/ingredients/:id
         [HttpGet("{id}")]
-        public IActionResult GetSingle(int id)
+        public IActionResult Show(int id)
         {
-            var ingredient = _context.Ingredients.Where(x => x.IngredientId == id);
+            var ingredient = _context.Ingredients.Where(x => x.Id == id);
 
             return Ok(ingredient);
         }
