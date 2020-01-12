@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
     baseUrl = 'http://localhost:5000/api/users/';
-    jwtHelper: JwtHelperService;
+    jwtHelper = new JwtHelperService();
     decodedToken: any;
     currentUser: User;
 
@@ -19,14 +19,18 @@ export class AuthService {
         return this.http.post(this.baseUrl + 'login', model)
             .pipe(
                 map((response: any) => {
-                    const user = response;
                     if (response) {
-                        localStorage.setItem('token', user.token);
-                        localStorage.setItem('user', JSON.stringify(user.user));
-                        this.decodedToken = this.jwtHelper.decodeToken(user.token);
-                        this.currentUser = user.user;
+                        localStorage.setItem('token', response.token);
+                        localStorage.setItem('user', JSON.stringify(response.user));
+                        this.decodedToken = this.jwtHelper.decodeToken(response.token);
+                        this.currentUser = response.user;
                     }
                 })
             );
+    }
+
+    loggedIn() {
+        const token = localStorage.getItem('token');
+        return !this.jwtHelper.isTokenExpired(token);
     }
 }

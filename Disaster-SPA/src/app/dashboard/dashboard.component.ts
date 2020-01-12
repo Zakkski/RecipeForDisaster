@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserListService } from '../services/userList.service';
 import { List } from '../models/list';
@@ -21,12 +19,14 @@ export class DashboardComponent implements OnInit {
   constructor(private authService: AuthService, private userListService: UserListService) { }
 
   ngOnInit() {
-      this.userListService.getUserLists(this.authService.currentUser.id, false).subscribe(lists => {
-          this.userLists = lists;
-      });
-      this.userListService.getUserLists(this.authService.currentUser.id, true).subscribe(lists => {
-          this.recipes = lists;
-      });
+    this.userListService.getUserLists(this.authService.decodedToken.nameid, false).subscribe(lists => {
+        this.userLists = lists;
+        console.log(this.userLists);
+    });
+    this.userListService.getUserLists(this.authService.decodedToken.nameid, true).subscribe(lists => {
+        this.recipes = lists;
+        console.log(this.recipes);
+    });
   }
 
   onLogin() {

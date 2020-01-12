@@ -1,9 +1,16 @@
-<p>Ingredients</p>
-<ol>
-    <li *ngFor="let i of ing">{{i.name}}</li>
-</ol>
+
 <form (submit)="onLogin()">
     <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
     <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
     <input type="submit" value="Log in">
 </form>
+
+<h3>Shopping Lists</h3>
+<ul>
+    <a *ngFor="let list of userLists">{{ list.name }}</a>
+</ul>
+
+<h3>Recipes</h3>
+<ul>
+    <a *ngFor="let list of recipes">{{ list.name }}</a>
+</ul>
