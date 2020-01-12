@@ -79,9 +79,15 @@ namespace Disaster.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             // create the actual token
             var token = tokenHandler.CreateToken(tokenDescriptor);
+            // TODO: Switch this to a mapper
+            var user = new {
+                Id = userFromRepo.Id,
+                Username = userFromRepo.Username
+            };
             // return token andn write it using the handler
             return Ok(new {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                user
             });
         }
     }

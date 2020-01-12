@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { UserListService } from '../services/userList.service';
+import { List } from '../models/list';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +9,23 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    ing: any;
     username: string;
     password: string;
+    recipes: any;
+    userLists: any;
+    // recipes: List[];
+    // userLists: List[];
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private authService: AuthService, private userListService: UserListService) { }
 
   ngOnInit() {
-      this.http.get('http://localhost:5000/api/ingredients').subscribe(ing => {
-        this.ing = ing;
-        console.log(this.ing);
+    this.userListService.getUserLists(this.authService.decodedToken.nameid, false).subscribe(lists => {
+        this.userLists = lists;
+        console.log(this.userLists);
+    });
+    this.userListService.getUserLists(this.authService.decodedToken.nameid, true).subscribe(lists => {
+        this.recipes = lists;
+        console.log(this.recipes);
     });
   }
 

@@ -14,9 +14,9 @@ namespace Disaster.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, [FromQuery] bool selectRecipes)
         {
-            var lists = _repo.GetUserLists(id, true);
+            var lists = _repo.GetUserLists(id, selectRecipes);
             return Ok(lists);
         }
     }
