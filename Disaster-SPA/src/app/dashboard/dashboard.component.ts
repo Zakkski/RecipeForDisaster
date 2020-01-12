@@ -13,8 +13,10 @@ import { List } from '../models/list';
 export class DashboardComponent implements OnInit {
     username: string;
     password: string;
-    recipes: List[];
-    userLists: List[];
+    recipes: any;
+    userLists: any;
+    // recipes: List[];
+    // userLists: List[];
 
   constructor(private authService: AuthService, private userListService: UserListService) { }
 
