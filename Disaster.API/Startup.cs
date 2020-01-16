@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Disaster.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,7 @@ namespace RecipeForDisaster
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddCors();
             services.AddDbContext<DataContext>();
@@ -40,6 +42,7 @@ namespace RecipeForDisaster
             // Like Singleton but uses same instance for calls in the same http request
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
+            services.AddScoped<IListItemRepository, ListItemRepository>();
             services.AddScoped<IUserListRepository, UserListRepository>();
             // Authentication scheme that will be used
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -51,8 +54,7 @@ namespace RecipeForDisaster
                                 ValidateIssuer = false,
                                 ValidateAudience = false
                             };
-                        });
-            
+                        });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
