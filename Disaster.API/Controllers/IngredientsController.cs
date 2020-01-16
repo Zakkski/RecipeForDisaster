@@ -12,10 +12,10 @@ namespace Disaster.API.Controllers
     [ApiController]
     public class IngredientsController : ControllerBase
     {
-        private readonly IIngredientRepository _repo;
-        public IngredientsController(IIngredientRepository repo)
+        private readonly DataContext _context;
+        public IngredientsController(DataContext context)
         {
-            _repo = repo;
+            _context = context;
         }
 
         // api/ingredients
@@ -24,9 +24,18 @@ namespace Disaster.API.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var ingredients = _repo.Index();
+            var ingredients = _context.Ingredients.ToList();
 
             return Ok(ingredients);
         }    
+
+        // api/ingredients/:id
+        [HttpGet("{id}")]
+        public IActionResult Show(int id)
+        {
+            var ingredient = _context.Ingredients.Where(x => x.Id == id);
+
+            return Ok(ingredient);
+        }
     }
 }

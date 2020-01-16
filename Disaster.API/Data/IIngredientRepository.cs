@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using Disaster.API.Models.ViewModels;
+using System.Threading.Tasks;
+using Disaster.API.Models;
 
 namespace Disaster.API.Data
 {
     public interface IIngredientRepository
     {
-        IEnumerable<ViewIngredient> Index();
+        Task<Ingredient[]> ListIngredients(int listId);
     }
 }

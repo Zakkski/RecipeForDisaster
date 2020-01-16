@@ -9,8 +9,6 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using AutoMapper;
-using Disaster.API.Models.ViewModels;
 
 namespace Disaster.API.Controllers
 {
@@ -22,12 +20,10 @@ namespace Disaster.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        private readonly IMapper _mapper;
-        public UsersController(IAuthRepository repo, IConfiguration config, IMapper mapper)
+        public UsersController(IAuthRepository repo, IConfiguration config)
         {
             _config = config;
             _repo = repo;
-            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -83,8 +79,11 @@ namespace Disaster.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             // create the actual token
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            var user = _mapper.Map<ViewUser>(userFromRepo);
+            // TODO: Switch this to a mapper
+            var user = new {
+                Id = userFromRepo.Id,
+                Username = userFromRepo.Username
+            };
             // return token andn write it using the handler
             return Ok(new {
                 token = tokenHandler.WriteToken(token),
