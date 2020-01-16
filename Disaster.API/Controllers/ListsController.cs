@@ -83,5 +83,11 @@ namespace Disaster.API.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteList(int id)
+        {
+            return Ok(_listRepo.DeleteList(id));
+        }
     }
 }
