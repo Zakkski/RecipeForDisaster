@@ -6,6 +6,7 @@ namespace Disaster.API.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        
         public User Creator { get; set; }
         public int? CreatorId { get; set; }
         public bool IsRecipe { get; set; }

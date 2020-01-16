@@ -7,14 +7,10 @@
 
 <h3>Shopping Lists</h3>
 <ul>
-    <li *ngFor="let list of userLists">
-        <a [routerLink]="['/shopping-lists', list.id]">{{ list.name }}</a>
-    </li>
+    <a *ngFor="let list of userLists">{{ list.name }}</a>
 </ul>
 
 <h3>Recipes</h3>
 <ul>
-    <li *ngFor="let list of recipes">
-        <a [routerLink]="['/recipes', list.id]">{{ list.name }}</a>
-    </li>
+    <a *ngFor="let list of recipes">{{ list.name }}</a>
 </ul>

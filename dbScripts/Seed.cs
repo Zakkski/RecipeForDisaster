@@ -41,18 +41,6 @@
 //     Count = true
 // };
 // Ingredients.InsertOnSubmit(ing5 );
-// Ingredients ing6 = new Ingredients()
-// {
-//     Name = "Orange",
-//     Count = true
-// };
-// Ingredients.InsertOnSubmit(ing6 );
-// Ingredients ing7 = new Ingredients()
-// {
-//     Name = "Thyme",
-//     Count = true
-// };
-// Ingredients.InsertOnSubmit(ing7 );
 // SubmitChanges();
 
 // // Create Lists

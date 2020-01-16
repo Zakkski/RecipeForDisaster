@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Disaster.API.Models;
 
@@ -9,7 +8,5 @@ namespace Disaster.API.Data
     {
         // If true grab user recipes if false grab shopping lists
         IEnumerable<object> GetUserLists(int userId, bool selectRecipeLists);
-        object GetList(int listId);
-        IQueryable<List> GetUserList(int listId);
     }
 }

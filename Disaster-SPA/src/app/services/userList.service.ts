@@ -12,8 +12,4 @@ export class UserListService {
     getUserLists(userId: number, selectRecipes: boolean) {
         return this.http.get(this.baseUrl + userId, { params: { selectRecipes: selectRecipes.toString()}});
     }
-
-    getUserList(listId: number) {
-        return this.http.get(this.baseUrl + 'user/' + listId);
-    }
 }
