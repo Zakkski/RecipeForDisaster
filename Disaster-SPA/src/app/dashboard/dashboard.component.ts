@@ -21,11 +21,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.userListService.getUserLists(this.authService.decodedToken.nameid, false).subscribe(lists => {
         this.userLists = lists;
-        console.log(this.userLists);
     });
     this.userListService.getUserLists(this.authService.decodedToken.nameid, true).subscribe(lists => {
         this.recipes = lists;
-        console.log(this.recipes);
     });
   }
 
