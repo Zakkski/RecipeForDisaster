@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Disaster.API.Data;
+using Disaster.API.DTOs;
 using Disaster.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,11 +26,25 @@ namespace Disaster.API.Controllers
             return Ok(lists);
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("details/{id}")]
         public IActionResult Show(int id)
         {
             var list = _listRepo.GetList(id);
             return Ok(list);
+        }
+
+        [HttpPost("{userId}")]
+        public IActionResult Create(int userId, ListForCreateDto listForCreateDto)
+        {
+            var newList = new List {
+                Name = listForCreateDto.Name,
+                IsRecipe = listForCreateDto.IsRecipe,
+                CreatorId = listForCreateDto.CreatorId
+            };
+
+            _listRepo.AddUserList(userId, newList);
+
+            return Ok();
         }
 
         [HttpPost("port/{id}/{recipeId}")]

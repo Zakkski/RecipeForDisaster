@@ -18,7 +18,26 @@ namespace Disaster.API.Data
             _context = context;
         }
 
-        
+        public IQueryable<List> AddUserList(int userId, List list)
+        {
+            _context.Add(list);
+            _context.SaveChanges();
+
+            _context.Add(new UserList{
+                UserId = userId,
+                ListId = list.Id
+            });
+            _context.SaveChanges();
+
+            return null;
+        }
+
+        public bool DeleteList(int listId)
+        {
+            var entity = _context.Lists.Where(x => x.Id == listId).FirstOrDefault();
+            _context.Lists.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
 
         public object GetList(int listId)
         {
@@ -49,7 +68,7 @@ namespace Disaster.API.Data
                                             .ThenInclude(x => x.ListItems)
                                             .ThenInclude(x => x.Ingredient)
                                             .Include(x => x.List).ThenInclude(x => x.Creator)
-                                            .Select(x => _mapper.Map<List, ViewList>(x.List));
+                                            .Select(x => _mapper.Map<List, ViewList>(x.List)).ToList();
 
             return lists;
         }
