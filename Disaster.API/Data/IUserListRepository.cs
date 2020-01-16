@@ -11,5 +11,7 @@ namespace Disaster.API.Data
         IEnumerable<object> GetUserLists(int userId, bool selectRecipeLists);
         object GetList(int listId);
         IQueryable<List> GetUserList(int listId);
+        IQueryable<List> AddUserList(int userId, List list);
+        bool DeleteList(int listId);
     }
 }
