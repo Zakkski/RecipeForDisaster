@@ -33,5 +33,19 @@ namespace Disaster.API.Data
             }
             return _context.SaveChanges() > 0;
         }
+
+        public bool DeleteListItem(int listItemId)
+        {
+            var entity = _context.ListItems.Where(x => x.Id == listItemId).FirstOrDefault();
+            _context.ListItems.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        public bool ClearList(int listId)
+        {
+            var entities = _context.ListItems.Where(x => x.ListId == listId);
+            _context.ListItems.RemoveRange(entities);
+            return _context.SaveChanges() > 0;
+        }
     }
 }
