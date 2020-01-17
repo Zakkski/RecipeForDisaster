@@ -47,5 +47,12 @@ namespace Disaster.API.Data
             _context.ListItems.RemoveRange(entities);
             return _context.SaveChanges() > 0;
         }
+
+        public List<ListItem> AddListItems(List<ListItem> listItems)
+        {
+            _context.AddRange(listItems);
+            _context.SaveChanges();
+            return listItems;
+        }
     }
 }
