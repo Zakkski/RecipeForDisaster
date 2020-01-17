@@ -9,13 +9,15 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     RecipeComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
