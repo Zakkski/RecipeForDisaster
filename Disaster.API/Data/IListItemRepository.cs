@@ -7,5 +7,7 @@ namespace Disaster.API.Data
     {
         bool UpdateListItems(IEnumerable<ListItem> listItems);
         ListItem AddListItem(ListItem listItem);
+        bool DeleteListItem(int listItemId);
+        bool ClearList(int listId);
     }
 }
