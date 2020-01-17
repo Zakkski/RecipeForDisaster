@@ -18,9 +18,16 @@ namespace Disaster.API.Data
             _mapper = mapper;
         }
 
-        public  IEnumerable<ViewIngredient> Index()
+        public IEnumerable<ViewIngredient> Index()
         {
             return  _context.Ingredients.Select(ingredient => _mapper.Map<Ingredient, ViewIngredient>(ingredient)).ToList();
+        }
+
+        public List<Ingredient> AddIngredients(List<Ingredient> ingredients)
+        {
+            _context.AddRange(ingredients);
+            _context.SaveChanges();
+            return ingredients;
         }
 
     }
