@@ -12,6 +12,7 @@ namespace Disaster.API.Models.ViewModels
             CreateMap<List, ViewList>();
             CreateMap<ListItem, ViewListItem>();
             CreateMap<ListItemForCreateDto, ListItem>();
+            CreateMap<IngredientForCreate, Ingredient>();
         }
     }
 }
