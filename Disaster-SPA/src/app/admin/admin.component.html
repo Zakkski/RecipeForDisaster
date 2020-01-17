@@ -1,0 +1,14 @@
+<h1>Admin Dashboard</h1>
+<h3>Add Ingredients</h3>
+<form (ngSubmit)="onSubmit()" [formGroup]="ingredientForm">
+    <div formArrayName="ingredients" *ngFor="let ingredient of ingredients.controls; let i=index" >
+        <div [formGroupName]="i">
+            <input type="text" placeholder="Ingredient Name" formControlName="name">
+            <label for="count">Count: </label>
+            <!-- TODO: cant get this to return false when unchecked -->
+            <input type="checkbox" formControlName="count">
+        </div>
+    </div>
+    <input type="submit">
+</form>
+<button (click)="addIngredient()">Add form fields</button>
